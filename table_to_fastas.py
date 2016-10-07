@@ -43,9 +43,5 @@ def main():
     write_sequences(fasta_path, table_path, output_path)
 
 
-
-
-
-
 if __name__ == "__main__":
     main()
