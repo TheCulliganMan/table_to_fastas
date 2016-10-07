@@ -3,6 +3,30 @@ from copy import deepcopy
 from Bio import SeqIO
 from Bio.Seq import Seq
 
+#!/usr/bin/env python
+import vcf
+
+"""
+vcf_file = "out.5simus.thinned.50k.maxmaf075hwe.vcf.filtered.vcf"
+output_handle = open("table.tsv", "w+")
+with open('vcf_filtered_out.vcf', 'w+') as output_handle:
+    with open(vcf_file) as input_handle:
+        vcf_reader = vcf.Reader(input_handle)
+        vcf_writer = vcf.Writer(output_handle, vcf_reader)
+        for num, record in enumerate(vcf_reader):
+            if not num:
+                output_handle.write(
+                    "\t".join(["CHROM", "POS", "QUAL", "REF", "ALT"] + [sample.sample for sample in record.samples] + ["\n"])
+                )
+            samples_list =  [sample.gt_bases.replace("/","") for sample in record.samples]
+            unique = set(samples_list)
+            if len(unique) > 2:
+                vcf_writer.write_record(record)
+                output_handle.write(
+                    "\t".join([str(i) for i in [record.CHROM, record.POS, record.QUAL, record.REF, ",".join([str(j) for j in record.ALT])]] + samples_list + ["\n"])
+                )
+"""
+
 def yield_positions(table_path):
     with open(table_path) as input_handle:
         for num, line in enumerate(input_handle):
